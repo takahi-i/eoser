@@ -1,7 +1,7 @@
 /**
- * redpen: a text inspection tool
- * Copyright (c) 2014-2015 Recruit Technologies Co., Ltd. and contributors
- * (see CONTRIBUTORS.md)
+ * eoser: a sentence segmenter
+ * Copyright (c) 2014-2015 Takahiko Ito, Recruit Technologies Co., Ltd.
+ * and contributors (see CONTRIBUTORS.md)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
