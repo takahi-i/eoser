@@ -21,11 +21,11 @@ package cc.redpen;
  * Error used to model the failure of Validators.
  */
 @SuppressWarnings("serial")
-public class RedPenException extends Exception {
+public class EOSerException extends Exception {
     /**
      * Constructor.
      */
-    public RedPenException() {
+    public EOSerException() {
         super();
     }
 
@@ -34,7 +34,7 @@ public class RedPenException extends Exception {
      *
      * @param message error message
      */
-    public RedPenException(String message) {
+    public EOSerException(String message) {
         super(message);
     }
 
@@ -44,7 +44,7 @@ public class RedPenException extends Exception {
      * @param message error message
      * @param cause   error cause
      */
-    public RedPenException(String message, Exception cause) {
+    public EOSerException(String message, Exception cause) {
         super(message, cause);
     }
 
@@ -52,7 +52,7 @@ public class RedPenException extends Exception {
      * Constructor.
      * @param causeException seed exception.
      */
-    public RedPenException(Exception causeException) {
+    public EOSerException(Exception causeException) {
         this(causeException.getMessage(), causeException);
     }
 }
