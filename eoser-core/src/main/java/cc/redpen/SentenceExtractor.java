@@ -63,16 +63,9 @@ public final class SentenceExtractor {
     /**
      * Constructor.
      */
-    SentenceExtractor(char[] fullStopList, char[] rightQuotationList) {
+    public SentenceExtractor(char[] fullStopList, char[] rightQuotationList) {
         this.fullStopList = fullStopList;
         this.rightQuotationList = rightQuotationList;
-        this.fullStopPattern = this.constructEndSentencePattern();
-        this.endOfSentenceDetector = new EndOfSentenceDetector(
-                this.fullStopPattern, this.WHITE_WORDS);
-    }
-
-    public SentenceExtractor(char[] endCharacters) {
-        this.fullStopList = fullStopList;
         this.fullStopPattern = this.constructEndSentencePattern();
         this.endOfSentenceDetector = new EndOfSentenceDetector(
                 this.fullStopPattern, this.WHITE_WORDS);
