@@ -16,6 +16,7 @@
 
     <modules>
         <module>eoser-core</module>
+        <module>eoser-cli</module>
     </modules>
 
     <build>
