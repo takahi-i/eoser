@@ -71,6 +71,13 @@ public final class SentenceExtractor {
                 this.fullStopPattern, this.WHITE_WORDS);
     }
 
+    public SentenceExtractor(char[] endCharacters) {
+        this.fullStopList = fullStopList;
+        this.fullStopPattern = this.constructEndSentencePattern();
+        this.endOfSentenceDetector = new EndOfSentenceDetector(
+                this.fullStopPattern, this.WHITE_WORDS);
+    }
+
     private static char[] extractPeriods(SymbolTable symbolTable) {
         char[] periods = new char[]{
                 symbolTable.getValueOrFallbackToDefault(FULL_STOP),
@@ -177,7 +184,7 @@ public final class SentenceExtractor {
      *
      * @return regex pattern to detect end sentences
      */
-    Pattern constructEndSentencePattern() {
+    public Pattern constructEndSentencePattern() {
         if (this.fullStopList == null || this.fullStopList.length == 0) {
             throw new IllegalArgumentException("No end character is specified");
         }

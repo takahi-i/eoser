@@ -40,7 +40,7 @@ public final class SymbolTable implements Serializable {
     /**
      * Constructor.
      */
-    SymbolTable(String lang, Optional<String> type, List<Symbol> customSymbols) {
+    public SymbolTable(String lang, Optional<String> type, List<Symbol> customSymbols) {
         super();
         this.lang = lang;
         this.type = type.orElse("");
