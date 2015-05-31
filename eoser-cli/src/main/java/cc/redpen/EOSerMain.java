@@ -14,8 +14,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Optional;
 
-public class Main {
-    private static final Logger LOG = LoggerFactory.getLogger(Main.class);
+public class EOSerMain {
+    private static final Logger LOG = LoggerFactory.getLogger(EOSerMain.class);
     private static final String PROGRAM = "eoser";
 
     public static void main(String... args) throws EOSerException {
