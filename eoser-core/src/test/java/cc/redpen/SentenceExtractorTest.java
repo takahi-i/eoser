@@ -30,8 +30,7 @@ import static org.junit.Assert.assertEquals;
 
 public class SentenceExtractorTest {
 
-    private List<Sentence> createSentences(List<Pair<Integer, Integer>> outputPositions,
-            int lastPosition, String line) {
+    private List<Sentence> createSentences(List<Pair<Integer, Integer>> outputPositions, String line) {
         List<Sentence> output = new ArrayList<>();
         for (Pair<Integer, Integer> outputPosition : outputPositions) {
             output.add(new Sentence(line.substring(outputPosition.first, outputPosition.second), 0));
@@ -45,7 +44,7 @@ public class SentenceExtractorTest {
         List<Pair<Integer, Integer>> outputPositions = new ArrayList<>();
         final String input = "this is a pen.";
         int lastPosition = extractor.extract(input, outputPositions);
-        List<Sentence> outputSentences = createSentences(outputPositions, lastPosition, input);
+        List<Sentence> outputSentences = createSentences(outputPositions, input);
         assertEquals(1, outputSentences.size());
         assertEquals(input, outputSentences.get(0).getContent());
         assertEquals(14, lastPosition);
@@ -57,7 +56,7 @@ public class SentenceExtractorTest {
         final String input = "this is a pen. that is a paper.";
         List<Pair<Integer, Integer>> outputPositions = new ArrayList<>();
         int lastPosition = extractor.extract(input, outputPositions);
-        List<Sentence> outputSentences = createSentences(outputPositions, lastPosition, input);
+        List<Sentence> outputSentences = createSentences(outputPositions, input);
         assertEquals(2, outputSentences.size());
         assertEquals("this is a pen.", outputSentences.get(0).getContent());
         assertEquals(" that is a paper.", outputSentences.get(1).getContent());

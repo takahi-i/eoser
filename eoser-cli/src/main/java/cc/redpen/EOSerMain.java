@@ -1,6 +1,8 @@
 package cc.redpen;
 
 import cc.redpen.config.SymbolTable;
+import cc.redpen.model.Sentence;
+import cc.redpen.util.Pair;
 import org.apache.commons.cli.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class EOSerMain {
@@ -60,17 +63,33 @@ public class EOSerMain {
                 Optional.<String>empty(), new ArrayList<>()));
 
         for (Path inputFile : inputFiles) {
+            StringBuilder sb = new StringBuilder();
             try (BufferedReader br = Files.newBufferedReader(inputFile)) {
                 String line;
                 while((line  = br.readLine()) != null) {
-
+                    sb.append(line);
                 }
             } catch (IOException e) {
                 LOG.error("An error was reported: " + e.getMessage());
             }
+            List<Pair<Integer, Integer>> outputPositions = new ArrayList<>();
+            String all = sb.toString();
+            int extract = extractor.extract(all, outputPositions);
+            List<Sentence> results = createSentences(outputPositions,all);
+            for (Sentence result : results) {
+                System.out.println(result.getContent());
+            }
         }
 
         return 0;
+    }
+
+    private static List<Sentence> createSentences(List<Pair<Integer, Integer>> outputPositions, String line) {
+        List<Sentence> output = new ArrayList<>();
+        for (Pair<Integer, Integer> outputPosition : outputPositions) {
+            output.add(new Sentence(line.substring(outputPosition.first, outputPosition.second), 0));
+        }
+        return output;
     }
 
     private static void printHelp(Options opt) {
