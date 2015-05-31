@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>eoser-core</artifactId>
-    <version>1.1</version>
+    <version>1.0</version>
     <name>eoser-core</name>
     <url>http://redpen.cc</url>
 
