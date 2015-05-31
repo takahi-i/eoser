@@ -31,7 +31,7 @@ import static org.junit.Assert.assertEquals;
 public class SentenceExtractorTest {
 
     private List<Sentence> createSentences(List<Pair<Integer, Integer>> outputPositions,
-                                           int lastPosition, String line) {
+            int lastPosition, String line) {
         List<Sentence> output = new ArrayList<>();
         for (Pair<Integer, Integer> outputPosition : outputPositions) {
             output.add(new Sentence(line.substring(outputPosition.first, outputPosition.second), 0));

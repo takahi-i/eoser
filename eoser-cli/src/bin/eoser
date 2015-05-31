@@ -1,0 +1,38 @@
+SCRIPT="$0"
+
+# SCRIPT may be an arbitrarily deep series of symlinks. Loop until we have the concrete path.
+while [ -h "$SCRIPT" ] ; do
+  ls=`ls -ld "$SCRIPT"`
+  # Drop everything prior to ->
+  link=`expr "$ls" : '.*-> \(.*\)$'`
+  if expr "$link" : '/.*' > /dev/null; then
+    SCRIPT="$link"
+  else
+    SCRIPT=`dirname "$SCRIPT"`/"$link"
+  fi
+done
+
+# Find eoser home
+NAIS_TAGGER_HOME=`dirname "$SCRIPT"`/..
+
+# Make EOSER_HOME absolute
+EOSER_HOME=`cd "$EOSER_HOME"; pwd`
+EOSER_CLASSPATH=$EOSER_HOME/conf/*:$EOSER_HOME/lib/*
+
+if [ -z "$JAVA_HOME" ]; then
+    echo "Error: JAVA_HOME is not defined. Can not start eoser" 1>&2
+    exit 1
+fi
+
+JAVA_CMD="$JAVA_HOME/bin/java"
+
+if [ ! -x "$JAVA_CMD" ]; then
+    echo "Error: $JAVA_CMD is not execututable. Can not start eoser" 1>&2
+    exit 1
+fi
+
+exec "$JAVA_CMD" $JAVA_OPTS \
+  -classpath "$EOSER_CLASSPATH" \
+  cc.redpen.EOSerMain \
+  "$@"
+

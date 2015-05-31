@@ -63,7 +63,7 @@ public class EOSerMain {
             try (BufferedReader br = Files.newBufferedReader(inputFile)) {
                 String line;
                 while((line  = br.readLine()) != null) {
-                    System.out.println("line: " + line);
+
                 }
             } catch (IOException e) {
                 LOG.error("An error was reported: " + e.getMessage());
