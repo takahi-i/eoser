@@ -74,11 +74,12 @@ public class EOSerMain {
             }
             List<Pair<Integer, Integer>> outputPositions = new ArrayList<>();
             String all = sb.toString();
-            int extract = extractor.extract(all, outputPositions);
+            int lastPosition = extractor.extract(all, outputPositions);
             List<Sentence> results = createSentences(outputPositions,all);
             for (Sentence result : results) {
                 System.out.println(result.getContent());
             }
+            System.out.println(all.substring(lastPosition));
         }
 
         return 0;

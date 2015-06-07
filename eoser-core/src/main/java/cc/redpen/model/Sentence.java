@@ -74,43 +74,6 @@ public final class Sentence implements Serializable {
         this.startPositionOffset = startOffset;
     }
 
-
-    /**
-     * Get line number where the sentence starts.
-     *
-     * @return line number
-     */
-    public int getLineNumber() {
-        return lineNumber;
-    }
-
-    /**
-     * Set line number where the sentence starts.
-     *
-     * @param lineNumber line number
-     */
-    public void setLineNumber(int lineNumber) {
-        this.lineNumber = lineNumber;
-    }
-
-    /**
-     * Return links the sentence contains.
-     *
-     * @return a set of links
-     */
-    public List<String> getLinks() {
-        return links;
-    }
-
-    /**
-     * Add a link to Sentence
-     *
-     * @param link link url
-     */
-    public void addLink(String link) {
-        this.links.add(link);
-    }
-
     /**
      * Get content of sentence.
      *
@@ -119,44 +82,6 @@ public final class Sentence implements Serializable {
     public String getContent() {
         return content;
     }
-
-    /**
-     * Set content of sentence.
-     *
-     * @param content sentence
-     */
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    /**
-     * Get start column offset where the sentence starts.
-     *
-     * @return column offset of start sentence
-     */
-    public int getStartPositionOffset() {
-        return startPositionOffset;
-    }
-
-
-    /**
-     * Detect the sentence is the first sentence of a paragraph.
-     *
-     * @return true when the first sentence of a paragraph. false otherwise.
-     */
-    public boolean isFirstSentence() {
-        return isFirstSentence;
-    }
-
-    /**
-     * Set a flag to detect if the sentence is a first sentence of a paragraph.
-     *
-     * @param isFirstSentence a flag to detect if the sentence exists in the begging of a paragraph
-     */
-    public void setIsFirstSentence(boolean isFirstSentence) {
-        this.isFirstSentence = isFirstSentence;
-    }
-
 
     @Override
     public String toString() {
