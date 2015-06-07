@@ -25,7 +25,6 @@ public class EOSerMain {
         System.exit(run(args));
     }
 
-    @SuppressWarnings("static-access")
     public static int run(String... args) throws EOSerException {
         Options options = new Options();
         options.addOption("h", "help", false, "Displays this help information and exits");
@@ -33,6 +32,10 @@ public class EOSerMain {
         options.addOption(OptionBuilder.withLongOpt("version")
                 .withDescription("Displays version information and exits")
                 .create("v"));
+
+        options.addOption(OptionBuilder.withLongOpt("l")
+                .withDescription("language")
+                .create("lang"));
 
         CommandLineParser commandLineParser = new BasicParser();
         CommandLine commandLine;
@@ -52,6 +55,11 @@ public class EOSerMain {
             System.out.println(SentenceExtractor.VERSION);
             return 0;
         }
+        String lang = "en";
+        if (commandLine.hasOption("l")) {
+            LOG.info("Set lang: \" {0} \"", lang);
+            lang = commandLine.getOptionValue("l");
+        }
 
         String[] inputFileNames = commandLine.getArgs();
         Path[] inputFiles = new Path[inputFileNames.length];
@@ -59,7 +67,7 @@ public class EOSerMain {
             inputFiles[i] = Paths.get(inputFileNames[i]);
         }
 
-        SentenceExtractor extractor = new SentenceExtractor(new SymbolTable("en",
+        SentenceExtractor extractor = new SentenceExtractor(new SymbolTable(lang,
                 Optional.<String>empty(), new ArrayList<>()));
 
         for (Path inputFile : inputFiles) {
