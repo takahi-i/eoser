@@ -57,7 +57,7 @@ public class EOSerMain {
         }
         String lang = "en";
         if (commandLine.hasOption("l")) {
-            LOG.info("Set lang: \" {0} \"", lang);
+            LOG.info("Set lang: \" {0} \"");
             lang = commandLine.getOptionValue("l");
         }
 
